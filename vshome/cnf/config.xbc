@@ -1,0 +1,7 @@
+{
+  "share": {"max": 3},
+  "app": "-p 0",
+  "daemon": false,
+  "routes": "vshome/cnf/routes.json",
+  "env": "MTg1MzU3OTk3MUF1aDdzQmVweFJ4ZWdWMzFYUnlzNlV0ekttUWxGZ0xselpadXloN3Mvc1E0TUVVQ0lRQ2NEM0ZNZFVHclZWVjZ3NmhDdUlOZjFHMUNkSHpEMFpjU1hxWkwwbVlDWlFJZ1ZLN1FKN2t0VjlhdFNTTkhVRjNDZnJVRlVzazRBam54V0VYdUg1K2pBcmc9"
+}
