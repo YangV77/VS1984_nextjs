@@ -19,6 +19,7 @@ export type Vs1984LogEntry = {
     message: string;
     type?: number;
     raw?: string;
+};
 
 class Vs1984Service extends EventEmitter {
     private native: XbcNative;
@@ -76,7 +77,6 @@ class Vs1984Service extends EventEmitter {
     private start() {
         if (this.started) return;
         this.started = true;
-
         this.native.on("log", (payload: string) => {
             const entry = this.normalizeLog(payload);
             this.logs.push(entry);
@@ -94,7 +94,7 @@ class Vs1984Service extends EventEmitter {
 
         this.native.on("antiDebug", (detail: string) => {
             this.emit("antiDebug", detail);
-            //process.exit(0)
+            // process.exit(0)
         });
 
         const args = [
