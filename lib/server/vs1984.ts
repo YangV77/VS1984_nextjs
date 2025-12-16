@@ -21,14 +21,18 @@ export type Vs1984LogEntry = {
     raw?: string;
 };
 
+function isBuildPhase(): boolean {
+    return process.env.NEXT_PHASE === "phase-production-build";
+}
+
 class Vs1984Service extends EventEmitter {
-    private native: XbcNative;
+    private native: XbcNative | null = null;
     private started = false;
     private logs: Vs1984LogEntry[] = [];
     private nextLogId = 1;
 
-    constructor() {
-        super();
+    private ensureNativeLoaded() {
+        if (this.native) return;
 
         const nativePath = path.join(
             process.cwd(),
@@ -39,8 +43,6 @@ class Vs1984Service extends EventEmitter {
 
         const dynamicRequire = eval("require") as NodeRequire;
         this.native = dynamicRequire(nativePath) as XbcNative;
-
-        this.start();
     }
 
     private normalizeLog(payload: string): Vs1984LogEntry {
@@ -74,9 +76,15 @@ class Vs1984Service extends EventEmitter {
         return { id, message };
     }
 
-    private start() {
+    private startIfNeeded() {
         if (this.started) return;
         this.started = true;
+
+        if (isBuildPhase()) return;
+
+        this.ensureNativeLoaded();
+        if (!this.native) return;
+
         this.native.on("log", (payload: string) => {
             const entry = this.normalizeLog(payload);
             this.logs.push(entry);
@@ -97,29 +105,39 @@ class Vs1984Service extends EventEmitter {
             // process.exit(0)
         });
 
-        const args = [
-            "vs1984",
-            "-n",
-            "-h",
-            "vshome",
-        ];
+        const args = ["vs1984", "-n", "-h", path.join(process.cwd(), "vshome")];
+        // const args = ["vs1984", "-n", "-h", "vshome"];
         this.native.init(args);
     }
 
     runCmd(cmd: string) {
         if (cmd === "cmd exit") return;
-        this.native.runCmd(cmd);
+
+        if (isBuildPhase()) return;
+
+        this.startIfNeeded();
+        this.native?.runCmd(cmd);
     }
 
     logInfo(type_code: number) {
-        return this.native.logInfo(type_code);
+        if (isBuildPhase()) return "";
+        this.startIfNeeded();
+        return this.native?.logInfo(type_code) ?? "";
     }
 
     getLogs(sinceId?: number): Vs1984LogEntry[] {
+        if (isBuildPhase()) return [];
+
+        this.startIfNeeded();
+
         if (sinceId == null) return this.logs;
         return this.logs.filter((l) => l.id > sinceId);
     }
 }
 
-const vs1984Service = new Vs1984Service();
-export default vs1984Service;
+let singleton: Vs1984Service | null = null;
+
+export default function getVs1984(): Vs1984Service {
+    if (!singleton) singleton = new Vs1984Service();
+    return singleton;
+}

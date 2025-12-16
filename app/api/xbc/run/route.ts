@@ -1,6 +1,9 @@
 // app/api/xbc/run/route.ts
 import { NextRequest, NextResponse } from "next/server";
-import vs1984 from "@/lib/server/vs1984";
+import getVs1984 from "@/lib/server/vs1984";
+
+export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
 
 export async function POST(req: NextRequest) {
     try {
@@ -11,14 +14,12 @@ export async function POST(req: NextRequest) {
             return NextResponse.json({ error: "cmd is required" }, { status: 400 });
         }
 
+        const vs1984 = getVs1984();
         vs1984.runCmd(cmd);
 
         return NextResponse.json({ ok: true });
     } catch (err: any) {
         console.error("Error in /api/xbc/run:", err);
-        return NextResponse.json(
-            { error: "internal error" },
-            { status: 500 }
-        );
+        return NextResponse.json({ error: "internal error" }, { status: 500 });
     }
 }

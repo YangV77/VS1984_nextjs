@@ -1,6 +1,22 @@
-# VS1984 Overview
+# VS1984 NextJS Demo
 
 ***Currently, only Ubuntu 24.04 is supported.***
+
+## In Ubuntu24.04 you can simply run:
+```bash
+npm install && npm run start
+```
+## Run demo in docker:
+### Linux:
+```bash
+ docker compose -f docker-compose.linux.yml up -d --build
+```
+### Destop:
+```bash
+ docker compose -f docker-compose.desktop.yml up -d --build
+```
+
+# VS1984 Overview
 
 [English](README.md) | [中文](README.zh-CN.md)
 

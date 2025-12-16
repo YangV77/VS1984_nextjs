@@ -1,7 +1,12 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 /.idea
-
+/rm_tmp.sh
+/rebuild.sh
+/vslog.sh
+/vsdbg.sh
+/vsdbgcmd.sh
+/vscmd.sh
 /vshome/.mpt
 /vshome/.tmp
 /vshome/dat

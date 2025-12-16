@@ -1,0 +1,22 @@
+services:
+  vs1984:
+    build: .
+    container_name: vs1984
+    ports:
+      # Next.js Web
+      - "4000:4000/tcp"
+
+      # VS1984 native default port ：51984（do not use -p 0 in docker!）
+      - "51984:51984/tcp"
+
+      # BT
+      - "6881-6891:6881-6891/tcp"
+      - "6881-6891:6881-6891/udp"
+    environment:
+      - NODE_ENV=production
+      - PORT=4000
+      - LD_LIBRARY_PATH=/app/lib/native/lib
+      - VS1984_HOME=/app/vshome
+    volumes:
+      - ./vshome:/app/vshome
+    restart: unless-stopped

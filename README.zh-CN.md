@@ -1,7 +1,22 @@
-
-# VS1984 概览
+# VS1984 NextJS Demo
 
 ***现阶段, 只支持ubuntu24.04***
+
+## Ubuntu24.04 环境中, 简单运行命令即可尝试:
+```bash
+npm install && npm run start
+```
+## 在 Docker 环境种尝试:
+### Linux:
+```bash
+ docker compose -f docker-compose.linux.yml up -d --build
+```
+### Destop:
+```bash
+ docker compose -f docker-compose.desktop.yml up -d --build
+```
+
+# VS1984 概览
 
 [English](README.md) | [中文](README.zh-CN.md)
 
