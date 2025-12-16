@@ -2,6 +2,7 @@ services:
   vs1984:
     build: .
     container_name: vs1984
+    platform: linux/amd64
     ports:
       # Next.js Web
       - "4000:4000/tcp"

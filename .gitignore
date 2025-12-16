@@ -2,9 +2,13 @@
 
 /.idea
 /rm_tmp.sh
+/docker-compose.debug.yml
 /rebuild.sh
 /vslog.sh
 /vsdbg.sh
+/rerun.sh
+/vshome/cnf/tls.crt.pem
+/vshome/cnf/tls.key.der
 /vsdbgcmd.sh
 /vscmd.sh
 /vshome/.mpt
