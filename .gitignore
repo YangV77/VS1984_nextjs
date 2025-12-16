@@ -7,6 +7,7 @@
 /vslog.sh
 /vsdbg.sh
 /rerun.sh
+/Dockerfile_
 /vshome/cnf/tls.crt.pem
 /vshome/cnf/tls.key.der
 /vsdbgcmd.sh
