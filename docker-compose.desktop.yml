@@ -18,7 +18,6 @@ services:
       - PORT=4000
       - LD_LIBRARY_PATH=/app/lib/native/lib
       - VS1984_HOME=/app/vshome
-      - LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libasan.so.8
     volumes:
       - ./vshome:/app/vshome
     restart: unless-stopped
