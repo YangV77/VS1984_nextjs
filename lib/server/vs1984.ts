@@ -105,7 +105,7 @@ class Vs1984Service extends EventEmitter {
             // process.exit(0)
         });
 
-        const args = ["vs1984", "-n", "-h", path.join(process.cwd(), "vshome")];
+        const args = ["vs1984", "-n", "-l", "-h", path.join(process.cwd(), "vshome")];
         this.native.init(args);
     }
 
