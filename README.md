@@ -11,7 +11,13 @@ npm install && npm run start
 ```bash
  docker compose -f docker-compose.linux.yml up -d --build
 ```
-### Destop:
+### MacOS:
+```bash
+ docker compose -f docker-compose.desktop.yml up -d --build
+```
+### Windows:
+#### [Configure Docker Desktop](Docker-windows.md)
+
 ```bash
  docker compose -f docker-compose.desktop.yml up -d --build
 ```

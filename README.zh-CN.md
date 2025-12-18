@@ -6,12 +6,18 @@
 ```bash
 npm install && npm run start
 ```
-## 在 Docker 环境种尝试:
+## 在 Docker 环境中尝试:
 ### Linux:
 ```bash
  docker compose -f docker-compose.linux.yml up -d --build
 ```
-### Destop:
+### MacOS:
+```bash
+ docker compose -f docker-compose.desktop.yml up -d --build
+```
+### Windows:
+#### [配置Docker Desktop](Docker-windows.zh-CN.md)
+
 ```bash
  docker compose -f docker-compose.desktop.yml up -d --build
 ```
