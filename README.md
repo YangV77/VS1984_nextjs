@@ -50,8 +50,7 @@ Because the world needs a system that does not rely on servers but still provide
 
 - ✔ Anonymous chat
 - ✔ Anonymous voice calls
-- ✔ Uncensorable content publishing
-- ✔ Untraceable on-chain transactions
+- ✔ Uncensorable Untraceable content publishing
 - ✔ Paid BT content platforms
 - ✔ A globally distributed, secure communication network
 - ✔ An encrypted ecosystem beyond the reach of nation-state censors
